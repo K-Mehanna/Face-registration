@@ -1,0 +1,31 @@
+<html>
+
+  <head>
+    <title>Webcam registration</title>
+    <link rel="stylesheet" href="static/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+
+    {{ turbo() }}
+  </head>
+
+  <body>
+
+    <div id="webcam_div">
+      <img src="{{ url_for('video_feed') }}" id="webcam">
+    </div>
+    
+    {% include "name.html" %}
+
+    <div id="buttons">
+      <form method ="post" action="/">
+        <button type="submit" class="button yes" name="yes" value="yes" id="yes"> YES </button>
+        <button type="submit" class="button no" name="no" value="no" id="no"> NO </button>
+      </form> 
+    </div>
+
+  </body>
+
+</html>
+
+

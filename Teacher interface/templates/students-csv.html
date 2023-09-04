@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Student details
+{% endblock %}
+
+{% block main %}
+
+    <h1>Class Details</h1>
+    <br><br>
+
+    <form action="/students-csv" method="post" enctype="multipart/form-data">
+
+        <div class="students">
+            <div class="form-row">
+                <span>Student names (csv): </span>
+                <div class="form-group col-md-12">
+                    <input type="file" class="form-control-file" name="names" id="fileInput">
+                </div>
+            </div>
+            <br>
+
+            <div class="form-row">
+                <span>Student images: </span>
+                <div class="form-group col-md-12">
+                    <!-- Allows for multiple files to be submitted through one button -->
+                    <input type="file" class="form-control-file" name="images" id="imageInput" multiple>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+
+{% endblock %}
+
+

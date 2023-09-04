@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <h1>Dashboard</h1>
+    <br>
+
+
+    {% for class in classes %}
+        <div class="pill">
+            <p>
+                <span id="name{{ class.classID }}">{{ class.name.upper() }}</span>
+                <span id="time{{ class.classID }}">{{ class.time }}</span>
+                <span>Attendance: {{ class.percentage }}% ({{ class.present }} out of {{ class.numberOfStudents }})</span>
+                <span id="link{{ class.classID }}" class="link">Link to table</span>
+            </p>
+        </div>
+
+
+        <script>
+          
+            $(function() {
+              $('span#link{{ class.classID }}').bind('click', function() {
+                  
+                // Appropriate data for each class is assigned to a variable
+                let lowerName = $("#name{{ class.classID }}").html();
+                let name = lowerName.toLowerCase()
+                let time = $("#time{{ class.classID }}").html();
+                let week = "{{ class.week }}";
+                let day = "{{ class.day }}";
+                
+                    // Sends required data to the /table route as JSON
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        url: "/table",
+                        traditional: "true",
+                        data: JSON.stringify({name, time, week, day}),
+                        dataType: "json"
+                    });
+
+                    /* Gives session dictionary time to update, 
+                    then redirects user to /attendance route */
+                    setTimeout(function() { 
+                        window.location = "/attendance";}
+                        , 100); 
+                });
+            });
+
+        </script>
+
+
+    {% endfor %}
+
+
+
+{% endblock %}
+
+
+
+ 

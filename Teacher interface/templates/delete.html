@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete class
+{% endblock %}
+
+{% block main %}
+    <h1>Delete Class</h1>
+    <br><br>
+
+    <h3>Please select class to delete: </h3>
+    <br>
+
+    <form action="/delete" method="post">
+        <div class="form-group">
+            <select class="form-control" id="classSelect" name="answer">
+                <!-- Creates a dropdown option for every class -->                
+                {% for item in names %}
+                    <option>{{ item.upper() }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+
+{% endblock %}
+

@@ -1,0 +1,24 @@
+<html>
+<!-- Does not inherit from layout.html as it does not follow the same aesthetic -->
+  <head>
+    <title>Webcam registration</title>
+    <link rel="stylesheet" href="static/success.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Automatically redirects the user to the home screen after 3 seconds,
+    prventing each student having to do so themselves -->
+    <meta http-equiv="refresh" content="3; URL=/" />
+  </head>
+
+  <body>
+    <div id="success" class="blink">
+      <p class="message">You have been signed in as {{ name }}</p>
+      <p class="message">Class: {{ form }}</p>
+    </div>
+  </body>
+
+</html>
+
+
+
+
+

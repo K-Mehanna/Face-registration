@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Student details
+{% endblock %}
+
+{% block main %}
+    <h1>Class Details</h1>
+    <br>
+
+    <form action="/students" method="post">
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="name1">Student's full name</label>
+            <input type="text" class="form-control" id="name1" placeholder="Student's full name">
+        </div>
+
+        <div class="form-group col-md-6" id="test">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+        </div>
+
+        <br><br>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name1">Student's full name</label>
+                <input type="text" class="form-control" id="name1" placeholder="Student's full name">
+            </div>
+    
+            <div class="form-group col-md-6" id="test">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              </div>
+            </div>
+
+          
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+{% endblock %}

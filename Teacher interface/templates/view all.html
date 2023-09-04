@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    All Classes
+{% endblock %}
+
+{% block main %}
+    <h1>All Classes</h1>
+    <br>
+
+    <table class="table table-dark table-striped table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <!-- Table headings -->
+                <th scope="col">Class Name</th>
+                <th scope="col">Week</th>
+                <th scope="col">Day</th>
+                <th scope="col">Start Time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for class in classes %}
+            <tr>
+                <!-- For each class a new row is created
+                Each row contains the class name, week, day, and time -->
+                <td><span class="link" id="link{{ class.classID }}">{{ class.name.upper() }}</span></td>
+                <td id="week{{ class.classID }}">{{ class.week }}</td>
+                <td id="day{{ class.classID }}">{{ class.day }}</td>
+                <td id="time{{ class.classID }}">{{ class.time }}</td>
+            </tr>
+
+            <!-- Javascript to send data to table route when link is clicked -->
+            <script>
+                $(function() {
+                  $('span#link{{ class.classID }}').bind('click', function() {
+                    let name = $("#link{{ class.classID }}").html();
+                    let week = $("#week{{ class.classID }}").html();
+                    let day = $("#day{{ class.classID }}").html();
+                    let time = $("#time{{ class.classID }}").html();
+        
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json;charset=utf-8",
+                            url: "/table",
+                            traditional: "true",
+                            data: JSON.stringify({name, week, day, time}),
+                            dataType: "json"
+                        });
+
+                        // Gives session time to update
+                        setTimeout(function() {window.location = "/attendance";}, 100);
+                    });
+                });
+            </script>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+

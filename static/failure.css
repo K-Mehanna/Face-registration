@@ -1,0 +1,45 @@
+body {
+    background-color: black;
+}
+
+.container-lg {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 2%;
+}
+
+#inputs {
+    background-color: rgb(70, 70, 70);
+    padding: 5%;
+    border-radius: 25px;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn-primary {
+    border-radius: 7px;
+}
+
+/* Any forms in the customisable area */
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+/* The customisable area */
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+
+    color: white;
+}

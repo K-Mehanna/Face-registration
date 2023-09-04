@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Student details
+{% endblock %}
+
+{% block main %}
+    <h1>Class Details</h1>
+    <br><br>
+
+    <form action="/students-individual" method="post" enctype="multipart/form-data">
+        {% for item in loopingList %}
+
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <input type="text" class="form-control" name="name{{ item }}" placeholder="Student's full name">
+                </div>
+                <span>Image of student:</span>
+                <div class="form-group col-md-5" id="fileInput">
+                    <input type="file" class="form-control-file" name="image{{ item }}">
+                </div>
+            </div>
+            <br>
+
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+
+{% endblock %}
+
+

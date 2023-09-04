@@ -1,0 +1,140 @@
+/* Logo in navbar */
+nav .navbar-brand .logo {
+    color: #00719b;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+}
+
+/* Menu items in navbar have to be 
+customised via  an id and not a class */
+#add-class {
+    font-size: large;
+    font-weight: bold;
+}
+
+#log-out {
+    font-size: large;
+    font-weight: bold;
+}
+
+#log-in {
+    font-size: large;
+    font-weight: bold;
+}
+
+#register {
+    font-size: large;
+    font-weight: bold;
+}
+
+/* Navabr darkmode */
+.navbar-dark {
+    background-color: #1b1b1b;
+}
+
+/* Makes the logo a bit brighter so 
+it's easier to see in dark mode */
+.dark-logo {
+    color: #008ec2;
+}
+
+/* Any forms in the customisable area */
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+/* The customisable area */
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+/* Any images in the customisable area */
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+/* The body in darkmode */
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+/* The toggle button */
+.toggle {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.btn-sm { 
+    height: 30px; 
+    font-size: small;
+}
+
+.pill {
+    background-color: #1b1b1b;
+    border-radius: 20px;
+    color: white;
+    height: 75px;
+    padding: 12px 20px;
+    width: 100%;
+    margin: 15px;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.name {
+    float: left;
+}
+
+.time {
+    float: right;
+}
+
+p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.students {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0%;
+    font-size: x-large;
+    width: 350px;
+    text-align: center;
+}
+
+.class-details {
+    font-size: x-large;
+}
+
+.link {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #0051a8;
+}
+
+table {
+    font-size: x-large;
+}
+
+

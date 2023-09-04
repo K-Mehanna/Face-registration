@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% block refresh %}{% endblock %}
+
+        <!-- Links to the BootstrapCDN, a quicker way to get Bootstrap intergated into webpages -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/static/logo.png" rel="icon">
+
+        <!-- Link to the css file -->
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- Scripts requried for Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        
+        
+        <!-- Software title that contains the name, and can be added to by specific routes -->
+        <title>JIMS: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body id="body">
+        <!-- Navigation bar by Bootstrap which is light by default -->
+        <nav id="nav" class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><span class="logo" id="logo">JIMS</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}  <!-- If the user is logged in: -->
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <!-- Button to toggle dark mode -->
+                        <button class="btn btn-sm btn-outline-secondary toggle" type="button" data-toggle="button" aria-pressed="false">Toggle dark mode</button>
+                        <li class="nav-item"><a class="nav-link" href="/logout" id="log-out">Log Out</a></li>
+                    </ul>
+                {% else %}   <!-- If the user isn't logged in, only display the options to login or register -->
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <button class="btn btn-sm btn-outline-secondary toggle" type="button" data-toggle="button" aria-pressed="false">Toggle dark mode</button>
+                        <li class="nav-item"><a class="nav-link" href="/login" id="log-in">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        <!-- Allows for confirmation messages to flash up on screen -->
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-success alert-dismissible border text-center fade show" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </header>
+        {% endif %}
+
+        <!-- The main location for any specific content -->
+        <main class="container p-5" id="main">
+            {% block main %}{% endblock %}
+        </main>
+
+
+        
+        <script>
+            const btn = document.querySelector(".toggle");
+
+            const currentTheme = localStorage.getItem("theme");
+            if (currentTheme == "dark") {
+            document.body.classList.add("dark-mode");
+            document.getElementById("nav").className = 'navbar navbar-expand-md navbar-dark';
+            }
+
+
+            btn.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            document.getElementById("logo").classList.toggle("dark-logo");
+
+            var nav = document.getElementById("nav").className;
+
+            /* If the navbar is in the light setting, switch it to the dark mode and vice-versa */
+            if (nav === 'navbar navbar-expand-md navbar-light bg-light border') {
+                document.getElementById("nav").className = 'navbar navbar-expand-md navbar-dark';
+            } else {
+                document.getElementById("nav").className = 'navbar navbar-expand-md navbar-light bg-light border';
+            }
+
+            let theme = "light";
+            if (document.body.classList.contains("dark-mode")) {
+                theme = "dark";
+            }
+            localStorage.setItem("theme", theme);
+            });
+
+        </script>
+
+
+
+        <!-- <script>
+            const btn = document.querySelector(".toggle");
+
+            btn.addEventListener("click", function () {     /* When the button is pressed */
+                /* The body and logo switch to the dark mode setting */
+                document.getElementById("body").classList.toggle("dark-mode");
+                document.getElementById("logo").classList.toggle("dark-logo");
+
+                /* Gets the current class of the navbar */
+                var nav = document.getElementById("nav").className;
+                
+                /* If the navbar is in the light setting, switch it to the dark mode and vice-versa */
+                if (nav === 'navbar navbar-expand-md navbar-light bg-light border') {
+                    document.getElementById("nav").className = 'navbar navbar-expand-md navbar-dark';
+                } else {
+                    document.getElementById("nav").className = 'navbar navbar-expand-md navbar-light bg-light border';
+                }
+            });
+        </script> -->
+
+    </body>
+
+</html>
